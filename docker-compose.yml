@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fx_deals_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+  bloomberg-fx-deals:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fx_deals_db?useSSL=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: fx_user
+      SPRING_DATASOURCE_PASSWORD: fx_password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
