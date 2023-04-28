@@ -10,9 +10,6 @@ import java.time.LocalDateTime;
 public class FxDeal {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
   @NotEmpty(message = "Deal Unique Id cannot be empty or null")
   @Column(name = "deal_unique_id", unique = true)
   private String dealUniqueId;
@@ -49,14 +46,6 @@ public class FxDeal {
     this.targetCurrencyIsoCode = targetCurrencyIsoCode;
     this.dealTimestamp = dealTimestamp;
     this.dealAmount = dealAmount;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
   }
 
   public String getDealUniqueId() {
@@ -102,8 +91,6 @@ public class FxDeal {
   @Override
   public String toString() {
     return "FxDeal{"
-        + "id="
-        + id
         + ", dealUniqueId='"
         + dealUniqueId
         + '\''

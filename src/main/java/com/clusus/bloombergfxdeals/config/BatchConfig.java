@@ -1,6 +1,5 @@
 package com.clusus.bloombergfxdeals.config;
 
-import com.clusus.bloombergfxdeals.controller.FxDealController;
 import com.clusus.bloombergfxdeals.entity.FxDeal;
 import com.clusus.bloombergfxdeals.repository.FxDealRepository;
 import org.slf4j.Logger;
@@ -12,11 +11,6 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
-import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.batch.item.data.RepositoryItemWriter;
-import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
-import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
@@ -120,24 +114,4 @@ public class BatchConfig {
     taskExecutor.setConcurrencyLimit(10);
     return taskExecutor;
   }
-
-  //    @Bean
-  //    public RepositoryItemWriter<FxDeal> writer() {
-  //      RepositoryItemWriter<FxDeal> writer = new RepositoryItemWriter<>();
-  //      writer.setRepository(fxDealRepository);
-  //      writer.setMethodName("save");
-  //      return writer;
-  //    }
-
-  // @Bean
-  // public JdbcBatchItemWriter<FxDeal> customerItemWriter(){
-  //  JdbcBatchItemWriter<FxDeal> writer = new JdbcBatchItemWriter<>();
-  //  writer.setDataSource(this.dataSource);
-  //  writer.setSql("INSERT INTO fx_deals VALUES (:deal_unique_id, :ordering_currency_iso_code,
-  // :to_currency_iso_code, :deal_timestamp, :deal_amount)");
-  //  writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-  //  writer.afterPropertiesSet();
-  //
-  //  return writer;
-  // }
 }

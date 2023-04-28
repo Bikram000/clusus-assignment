@@ -16,6 +16,6 @@ public class FxDealProcessor implements ItemProcessor<FxDeal, FxDeal> {
   public FxDeal process(FxDeal fxDeal) throws Exception {
     // process and validate fxFields...
     logger.info("inside fxDealProcessor");
-    return null;
+    return fxDeal;
   }
 }

@@ -18,7 +18,7 @@ public class FxDealWriter implements ItemWriter<FxDeal> {
   @Autowired private FxDealRepository fxDealRepository;
 
   @Override
-  public void write(List<? extends FxDeal> fxDeal) throws Exception {
+  public void write(List<? extends FxDeal> fxDeal) {
     logger.info("inside FxDealWriter");
     fxDealRepository.saveAll(fxDeal);
   }
