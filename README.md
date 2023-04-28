@@ -66,3 +66,9 @@ If empty JSON payload is sent then reponse will be:
 }
 
 ```
+
+## POST /fx-deal/uploadFxDeal
+End point to upload csv file containing fx-deals and persist data inside file to database.
+Spring Batch is used to process large amount of data, for simplicity job is launched from
+this endpoint call, but we can also use scheduler to schedule job to process files from storage
+location automatically.
