@@ -22,14 +22,13 @@ public class FxDealWriter implements ItemWriter<FxDeal> {
   @Autowired private FxDealRepository fxDealRepository;
 
   @Override
-  @Transactional
   public void write(List<? extends FxDeal> fxDealsList) {
     logger.info("Inside FxDealWriter to save fxDeals");
 
     for (FxDeal fxDeal : fxDealsList) {
       try {
         if (!fxDealRepository.existsByUniqueDealId(fxDeal.getDealUniqueId())) {
-          fxDealRepository.save(fxDeal);
+          this.saveFxDeal(fxDeal);
           logger.info("FX Deal saved successfully with unique ID: {}", fxDeal.getDealUniqueId());
         } else {
           String errorMessage =
